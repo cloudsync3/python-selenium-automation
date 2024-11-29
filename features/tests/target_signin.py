@@ -26,10 +26,12 @@ driver.find_element(By.XPATH, "//button[@data-test='accountNav-signIn']").click(
 sleep(3)
 
 # “Sign into your Target account” text is shown
-driver.find_element(By.XPATH, "//h1[@class='sc-fe064f5c-0 sc-315b8ab9-2 WObnm gClYfs']")
+expected = 'Sign into your Target account'
+actual = driver.find_element(By.XPATH, "//h1/span").text
+assert expected == actual, f'Expected {expected} did not match actual {actual}'
 
 # SignIn button is shown
-driver.find_element(By.XPATH, "//button[@type='submit']")
+driver.find_element(By.ID, 'login')
 
 sleep(6)
 
