@@ -17,6 +17,43 @@ driver.get('https://www.amazon.com')
 driver.maximize_window()
 sleep(2)
 
+
+# Amazon logo
+driver.find_element(By.CSS_SELECTOR,"i.a-icon.a-icon-logo")
+
+# Create account
+driver.find_element(By.CSS_SELECTOR,"h1.a-spacing-small")
+
+# Name field
+driver.find_element(By.CSS_SELECTOR,'#ap_customer_name')
+
+# Email
+driver.find_element(By.CSS_SELECTOR,".a-input-text.a-span12.auth-required-field.auth-require-fields-match.auth-require-email-validaton")
+
+# Password field
+driver.find_element(By.CSS_SELECTOR,"input.a-input-text.a-form-normal.auth-require-password-validation")
+
+# Re-enter password field
+driver.find_element(By.CSS_SELECTOR, "#ap_password_check")
+
+# Create Account
+driver.find_element(By.CSS_SELECTOR,"input#continue")
+
+# Sign in link
+driver.find_element(By.CSS_SELECTOR,"[href*='/ap/signin?openid.pape.max_auth_age']")
+
+# Conditions of Use
+driver.find_element(By.CSS_SELECTOR, "a[href='/ap/lwa/agreement?agreementName=conditionsOfUse']")
+
+# Privacy Notice
+driver.find_element(By.CSS_SELECTOR,"a[href*='Name=privacyNotice']")
+
+
+
+
+
+
+
 #CSS
 driver.find_element(By.CSS_SELECTOR, "#twotabsearchtextbox")
 
