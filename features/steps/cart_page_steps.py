@@ -3,15 +3,9 @@ from behave import given, when, then
 from time import sleep
 
 
-@given('Open target main page')
-def open_main(context):
-    context.driver.get('https://www.target.com')
-
-
-@when('Click on the Cart icon')
-def step_click_cart_icon(context):
-    context.driver.find_element(By.XPATH, "//a[@data-test='@web/CartLink']").click()
-    sleep(3)
+# @given('Open target main page')
+# def open_main(context):
+#     context.driver.get('https://www.target.com')
 
 
 @then('Verify cart is empty message')
