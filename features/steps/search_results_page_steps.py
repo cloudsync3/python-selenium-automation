@@ -19,6 +19,11 @@ CONFIRM_ADD_BTN = (By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCa
 #     context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/Search/SearchButton']").click()
 #     sleep(10)
 
+@then('Verify results for {product} are displayed')
+def search_results(context, product):
+    context.app.search_results_page.verify_search_results_page(product)
+
+
 @when('Click on add to cart button')
 def click_add_to_cart(context):
     context.driver.find_element(*ADD_TO_CART).click()
