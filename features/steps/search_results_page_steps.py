@@ -4,9 +4,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 
-ADD_TO_CART = (By.CSS_SELECTOR, "[data-test='chooseOptionsButton']")
+ADD_TO_CART = (By.CSS_SELECTOR, "[id*='addToCartButton']")
 CONFIRM_ADD_BTN = (By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCart']")
-
+ADDED_PROD = (By.CSS_SELECTOR, '.h-text-grayDarkest.h-text-bold.h-text-lg')
 
 # @given('Open target main page')
 # def open_main(context):
@@ -21,23 +21,28 @@ CONFIRM_ADD_BTN = (By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCa
 
 @then('Verify results for {product} are displayed')
 def search_results(context, product):
-    context.app.search_results_page.verify_search_results_page(product)
+    context.app.search_results_page.search_results(product)
+
+
+@then('Verify search term {product} in URL')
+def search_url(context, product):
+    context.app.search_results_page.search_url(product)
 
 
 @when('Click on add to cart button')
 def click_add_to_cart(context):
-    context.driver.find_element(*ADD_TO_CART).click()
-    context.driver.wait.until(EC.visibility_of_element_located(CONFIRM_ADD_BTN))
+    context.app.search_results_page.click_add_to_cart()
+    # context.driver.wait.until(EC.visibility_of_element_located(CONFIRM_ADD_BTN))
 
 
 @when('Confirm add to cart button side navigation')
 def add_to_cart(context):
-    context.driver.find_element(*CONFIRM_ADD_BTN).click()
+    context.app.search_results_page.add_to_cart()
 
 
 @then('Product should be added to the cart')
 def added_product(context):
-    context.driver.wait.until(EC.element_to_be_clickable(CONFIRM_ADD_BTN))
-    context.driver.find_element(By.CSS_SELECTOR, '.h-text-grayDarkest.h-text-bold.h-text-lg')
-    context.driver.quit()
+    # context.driver.wait.until(EC.element_to_be_clickable(CONFIRM_ADD_BTN))
+    context.app.search_results_page.added_product()
+
 

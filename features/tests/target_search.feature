@@ -4,6 +4,7 @@ Scenario: User can search for a brush
     Given open target main page
     When  search for brush
     Then  verify results for brush are displayed
+    Then verify search term brush in URL
 
   Scenario: User can search for chips
     Given open target main page
