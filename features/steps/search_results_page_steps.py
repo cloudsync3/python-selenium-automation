@@ -21,7 +21,7 @@ ADDED_PROD = (By.CSS_SELECTOR, '.h-text-grayDarkest.h-text-bold.h-text-lg')
 
 @then('Verify results for {product} are displayed')
 def search_results(context, product):
-    context.app.search_results_page.search_results(product)
+    context.app.search_results_page.search_results_page(product)
 
 
 @then('Verify search term {product} in URL')
